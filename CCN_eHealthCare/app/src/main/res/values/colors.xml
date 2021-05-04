@@ -6,5 +6,14 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#ffffff</color>
+    <color name="ash">#b2beb5</color>
+    <color name="Pantoneblue">#0f4c81</color>
+    <color name="violet">#645394</color>
+    <color name="tomato">#e34132</color>
+    <color name="skyblue">#6ca0dc</color>
+    <color name="pinkLavender">#dbb2d1</color>
+    <color name="warmtone">#ec9787</color>
+    <color name="green">#00a68c</color>
+    <color name="yellow">#FFFF00</color>
 </resources>
