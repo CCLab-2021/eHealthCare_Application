@@ -182,14 +182,15 @@
                     android:id="@+id/register_btn"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="60dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="60dp"
                     android:background="@drawable/round_pantoneblue_btn"
                     android:text="Register"
                     android:textColor="@color/white"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/Pantoneblue" />
 
                 <TextView
                     android:id="@+id/register_tV"
@@ -210,15 +211,16 @@
                     android:id="@+id/goback_login_btn"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="60dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="60dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/round_pantoneblue_btn"
                     android:text="LOG IN"
                     android:textColor="@color/white"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/Pantoneblue" />
             </LinearLayout>
         </ScrollView>
 
