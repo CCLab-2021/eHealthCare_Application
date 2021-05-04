@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "517768078144",
+    "project_id": "ccn-ehealthcare",
+    "storage_bucket": "ccn-ehealthcare.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:517768078144:android:04c048ca5ed5828e3510a5",
+        "android_client_info": {
+          "package_name": "com.example.ccn_ehealthcare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "517768078144-cnv85o4c8rfolk3pma0p3dl3dn61d5kf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ccn_ehealthcare",
+            "certificate_hash": "49632766d430b1018f56a30b99b2006b486bef3a"
+          }
+        },
+        {
+          "client_id": "517768078144-vc7hfrbda0cquibuqgae8rir7al0200o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6j0o82y-q3KO73gdfSiwtKY0w581myV0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "517768078144-vc7hfrbda0cquibuqgae8rir7al0200o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
