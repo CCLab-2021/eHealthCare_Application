@@ -2,8 +2,178 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UI.patient.PatientHome">
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/Pantoneblue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/patient_tV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:text="Patient"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/view3"
+        app:layout_constraintStart_toStartOf="@id/view3"
+        app:layout_constraintTop_toTopOf="@+id/view3" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/welcome_cV"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/Pantoneblue"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view3" >
+
+        <TextView
+            android:id="@+id/welcome_tV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="13dp"
+            android:text="Welcome {user}. How are you doing today?"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:gravity="center_horizontal" />
+
+    </androidx.cardview.widget.CardView>
+
+
+    <LinearLayout
+        android:id="@+id/seeMy_lLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/welcome_cV">
+
+        <Button
+            android:id="@+id/doctors_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/round_skyblue_btn"
+            android:text="My Doctors"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:backgroundTint="@color/skyblue" />
+
+        <Button
+            android:id="@+id/reports_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/round_skyblue_btn"
+            android:text="My Reports"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:backgroundTint="@color/skyblue" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/info_lLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/seeMy_lLayout">
+
+        <Button
+            android:id="@+id/retreiveInfo_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/round_warmtone_btn"
+            android:text="Download Content"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:backgroundTint="@color/warmtone" />
+
+        <Button
+            android:id="@+id/pEmergency_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/round_red_btn"
+            android:text="Emergency"
+            android:textColor="@color/yellow"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/tomato" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/info_lLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" >
+
+
+        <Button
+            android:id="@+id/updateProfile_btn"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/round_skyblue_btn"
+            android:text="Edit Profile"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/skyblue" />
+
+        <Button
+            android:id="@+id/pLogout_btn"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/round_skyblue_btn"
+            android:text="Log Out"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/skyblue" />
+    </LinearLayout>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
