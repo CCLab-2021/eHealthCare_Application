@@ -9,15 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CCN_eHealthCare">
+        <activity android:name=".UI.Emergency"></activity>
+        <activity android:name=".UI.patient.PatientReports" />
+        <activity android:name=".UI.patient.PatientContents" />
+        <activity android:name=".UI.patient.PatientServers" />
+        <activity android:name=".UI.doctor.DoctorContents" />
+        <activity android:name=".UI.doctor.DoctorServers" />
+        <activity android:name=".UI.patient.MyDoctors" />
+        <activity android:name=".UI.UserProfile" />
+        <activity android:name=".UI.doctor.MyPatients" />
+        <activity android:name=".UI.doctor.DoctorReports" />
+        <activity android:name=".UI.patient.PatientHome" />
+        <activity android:name=".UI.doctor.DoctorHome" />
         <activity android:name=".UI.auth.Signup" />
-        <activity android:name=".UI.auth.Login" >
+        <activity android:name=".UI.auth.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
