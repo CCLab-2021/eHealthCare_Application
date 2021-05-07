@@ -70,6 +70,7 @@ class Login : AppCompatActivity() {
                 if (it.isSuccessful) {
                     Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
                     val currentUser = firebaseAuth.currentUser
+                    Log.e("FIREBASELOGIN", "START")
                     readDB(currentUser)
                 }
                 else {
@@ -81,6 +82,7 @@ class Login : AppCompatActivity() {
     }
 
     private fun readDB(currentUser: FirebaseUser?) {
+        Log.e("READDB", "START")
         val userID = currentUser!!.uid
         val userDBReference = databaseReference?.child(userID)
 
@@ -107,6 +109,8 @@ class Login : AppCompatActivity() {
                     val userFullName = snapshot.child("userFullName").value.toString()
                     val userEmail = snapshot.child("userEmail").value.toString()
                     val enterUserType = "Doctor"
+
+                    Log.e("READVALUE", "UID : $userID")
 
                     movePage(userID, userNickName, userPW, userBirth, userFullName, userEmail, enterUserType)
                 }
