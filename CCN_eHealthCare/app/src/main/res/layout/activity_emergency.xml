@@ -43,7 +43,7 @@
         app:layout_constraintTop_toBottomOf="@id/view5">
 
         <Button
-            android:id="@+id/call_btn"
+            android:id="@+id/call119_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="32dp"
@@ -56,7 +56,25 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:backgroundTint="@color/skyblue" />
+
+        <Button
+            android:id="@+id/calldoc_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="32dp"
+            android:background="@drawable/round_skyblue_btn"
+            android:gravity="center"
+            android:text="contact to my doctor"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/skyblue" />
 
 
     </LinearLayout>
