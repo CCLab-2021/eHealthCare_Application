@@ -71,7 +71,7 @@
         app:layout_constraintTop_toBottomOf="@id/welcome_cV">
 
         <Button
-            android:id="@+id/doctors_btn"
+            android:id="@+id/pDoctors_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -84,7 +84,7 @@
             app:backgroundTint="@color/skyblue" />
 
         <Button
-            android:id="@+id/reports_btn"
+            android:id="@+id/pReports_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -108,7 +108,7 @@
         app:layout_constraintTop_toBottomOf="@id/seeMy_lLayout">
 
         <Button
-            android:id="@+id/retreiveInfo_btn"
+            android:id="@+id/pDownload_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
@@ -147,7 +147,7 @@
 
 
         <Button
-            android:id="@+id/updateProfile_btn"
+            android:id="@+id/pUpdateProfile_btn"
             android:layout_width="100dp"
             android:layout_height="60dp"
             android:layout_margin="8dp"

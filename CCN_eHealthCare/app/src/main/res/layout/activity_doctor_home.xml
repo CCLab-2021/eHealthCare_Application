@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
-        android:text="Care Giver"
+        android:text="Doctor"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/white"
@@ -63,13 +63,13 @@
         android:id="@+id/checkMy_lLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:layout_marginLeft="32dp"
+        android:layout_marginTop="50dp"
         android:layout_marginRight="32dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/hello_cV"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pUpdateProfile_btn">
 
         <Button
             android:id="@+id/dPatients_btn"
@@ -100,78 +100,56 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/info_lLayout"
+    <Button
+        android:id="@+id/download_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
-        android:orientation="vertical"
+        android:background="@drawable/round_warmtone_btn"
+        android:text="Download Useful Contents"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:backgroundTint="@color/warmtone"
         app:layout_constraintTop_toBottomOf="@id/checkMy_lLayout"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
-        <Button
-            android:id="@+id/download_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:layout_weight="1"
-            android:background="@drawable/round_warmtone_btn"
-            android:text="Download Content"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            app:backgroundTint="@color/warmtone" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/dLogout_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginRight="32dp"
+        android:background="@drawable/round_skyblue_btn"
+        android:text="Log Out"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:backgroundTint="@color/skyblue"
+        app:layout_constraintTop_toBottomOf="@id/download_btn"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <Button
+        android:id="@+id/pUpdateProfile_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/info_lLayout"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" >
+        android:layout_marginTop="50dp"
+        android:background="@drawable/round_skyblue_btn"
+        android:text="Edit Profile"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:backgroundTint="@color/skyblue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hello_cV" />
 
-        <Button
-            android:id="@+id/updateProfile_btn"
-            android:layout_width="100dp"
-            android:layout_height="60dp"
-            android:layout_margin="8dp"
-            android:background="@drawable/round_skyblue_btn"
-            android:text="Edit Profile"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:backgroundTint="@color/skyblue" />
 
-        <Button
-            android:id="@+id/dLogout_btn"
-            android:layout_width="100dp"
-            android:layout_height="60dp"
-            android:layout_margin="8dp"
-            android:background="@drawable/round_skyblue_btn"
-            android:text="Log Out"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:backgroundTint="@color/skyblue" />
-    </LinearLayout>
-
-<!--    <Button-->
-<!--        android:id="@+id/createDB_btn"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop = "25dp"-->
-<!--        android:text="createDB"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/linearLayout" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
