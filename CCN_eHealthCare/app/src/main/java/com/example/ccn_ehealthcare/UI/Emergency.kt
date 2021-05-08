@@ -12,7 +12,7 @@ class Emergency : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_emergency)
-        call_btn.setOnClickListener {
+        call119_btn.setOnClickListener {
             var intent = Intent(Intent.ACTION_VIEW) // ACTION_CALL 적으면 바로 전화 연결
             intent.setData(Uri.parse("tel:119"))
             startActivity(intent)
