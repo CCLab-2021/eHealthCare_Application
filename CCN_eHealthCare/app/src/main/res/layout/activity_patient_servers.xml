@@ -65,8 +65,7 @@
             android:textColor="@color/white"
             android:textSize="22sp"
             android:textStyle="bold"
-            app:backgroundTint="#FFFFFF"
-            tools:backgroundTint="@color/skyblue" />
+            app:backgroundTint="@color/skyblue" />
 
         <Button
             android:id="@+id/server2_btn"
@@ -106,7 +105,7 @@
         android:layout_marginBottom="32dp"
         android:clickable="true"
         android:focusable="true"
-        android:tint="@color/white"
+        app:tint="@color/white"
         android:backgroundTint="@color/Pantoneblue"
         app:srcCompat="@drawable/ic_back"
         app:layout_constraintBottom_toBottomOf="parent"
