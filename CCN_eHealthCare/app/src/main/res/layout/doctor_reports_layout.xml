@@ -61,7 +61,7 @@
                 android:padding="16dp"
                 android:layout_below="@id/patientAge_tV"/>
             <EditText
-                android:id="@+id/patientReport_tV"
+                android:id="@+id/patientReport_eT"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:hint="Write a Report"
@@ -76,7 +76,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/patientReport_tV"
+                android:layout_below="@+id/patientReport_eT"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/round_pantoneblue_btn"
