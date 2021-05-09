@@ -50,7 +50,7 @@
                 android:textStyle="bold"
                 android:padding="16dp"
                 android:layout_below="@id/expand_reportsNumber_tV" />
-            <EditText
+            <TextView
                 android:id="@+id/expand_report_eT"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
