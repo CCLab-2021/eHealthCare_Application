@@ -18,10 +18,7 @@
         <activity android:name=".UI.patient.PatientContents" />
         <activity android:name=".UI.patient.PatientServers" />
         <activity android:name=".UI.doctor.DoctorContents"/>
-
         <activity android:name=".UI.doctor.DoctorServers" />
-
-
         <activity android:name=".UI.patient.MyDoctors" />
         <activity android:name=".UI.UserProfile" />
         <activity android:name=".UI.doctor.MyPatients" />
