@@ -253,8 +253,20 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                </LinearLayout>
+                    <Button
+                        android:id="@+id/changePW_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="170dp"
+                        android:text="Change Password"
+                        android:textSize="15sp"
+                        android:textAllCaps="false"
+                        android:background="@drawable/round_pantoneblue_btn"
+                        app:backgroundTint="@color/Pantoneblue" />
 
+                </LinearLayout>
 
 
                 <TextView
@@ -322,18 +334,6 @@
                         android:textSize="18sp"
                         app:backgroundTint="@color/Pantoneblue" />
 
-                    <Button
-                        android:id="@+id/delete_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="4dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/round_pantoneblue_btn"
-                        android:text="Delete"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="18sp"
-                        app:backgroundTint="@color/Pantoneblue" />
                 </LinearLayout>
             </LinearLayout>
 
