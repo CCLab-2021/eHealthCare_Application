@@ -8,10 +8,8 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ccn_ehealthcare.R
-import com.example.ccn_ehealthcare.UI.model.hospitalModel
 import com.example.ccn_ehealthcare.UI.model.myPatientsModel
 import kotlinx.android.synthetic.main.doctor_reports_layout.view.*
-import kotlinx.android.synthetic.main.hospital_contents_layout.view.*
 
 class myPatientsAdapter(val patientsList : List<myPatientsModel>) : RecyclerView.Adapter<myPatientsAdapter.ViewHolder>(){
     class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
@@ -19,7 +17,7 @@ class myPatientsAdapter(val patientsList : List<myPatientsModel>) : RecyclerView
         var patientName = itemView.patientName_tV
         var patientAge = itemView.patientAge_tV
         var patientAddress = itemView.patientAddress_tV
-        var patientReport = itemView.patientReport_tV
+        var patientReport : TextView = itemView.patientReport_eT
         var linearLayout : LinearLayout = itemView.linearLayout
         var expandableLayout : RelativeLayout = itemView.expandable_layout
 
