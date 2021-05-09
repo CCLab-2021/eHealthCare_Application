@@ -3,6 +3,8 @@ package com.example.ccn_ehealthcare
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.ccn_ehealthcare.firebaseDB.AvailableContentsDB
+import com.example.ccn_ehealthcare.firebaseDB.MyDoctorsDB
+import com.example.ccn_ehealthcare.firebaseDB.MyPatientsDB
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_create_d_b.*
@@ -17,9 +19,9 @@ class createDB : AppCompatActivity() {
         setContentView(R.layout.activity_create_d_b)
         database = FirebaseDatabase.getInstance()
 
-//        availableDoctor_btn.setOnClickListener {
-//            dbforavailableDoctor()
-//        }
+        availableDoctor_btn.setOnClickListener {
+            dbforavailableDoctor()
+        }
 //
 //        writeReports_btn.setOnClickListener {
 //            dbforwritereports()
@@ -38,9 +40,9 @@ class createDB : AppCompatActivity() {
 //            dbformyReports()
 //        }
 //
-//        patientsInfo_btn.setOnClickListener {
-//            dbforpatientsInfo()
-//        }
+        patientsInfo_btn.setOnClickListener {
+            dbformyPatients()
+        }
 //
 //        newReports_btn.setOnClickListener {
 //            dbfornewReports()
@@ -80,21 +82,21 @@ class createDB : AppCompatActivity() {
 //
 //    }
 //
-//    private fun dbforpatientsInfo() {
-//
-//        databaseReference = database?.reference!!.child("patientsInfo")
-//
-//        val patientsInfoDoctorsName = patientsInfoDoctorsName_eT.text.toString()
-//        val patientsInfoPatientsName = patientsInfoPatientsName_eT.text.toString()
-//        val patientsInfoPatientsAge = patientsInfoPatientsAge_eT.text.toString()
-//        val patientsInfoPatientsHome = patientsInfoPatientsHome_eT.text.toString()
-//        val patientsInfoReport = patientsInfoReport_eT.text.toString()
-//
-//        val patientsInfoDoctorsNameDB = databaseReference?.child(patientsInfoDoctorsName)
-//        val patientsInfoPatientsNameDB = patientsInfoDoctorsNameDB?.child(patientsInfoPatientsName)
-//
-//        patientsInfoPatientsNameDB?.setValue(patientsInfo(patientsInfoPatientsAge, patientsInfoPatientsHome, patientsInfoReport))
-//    }
+    private fun dbformyPatients() {
+
+        databaseReference = database?.reference!!.child("MyPatients")
+
+        val DoctorsName = myPatientsDoctorsName_eT.text.toString()
+        val PatientsName = myPatientsPatientsName_eT.text.toString()
+        val PatientsAge = myPatientsPatientsAge_eT.text.toString()
+        val PatientsAdd = myPatientsPatientsAdd_eT.text.toString()
+        val Report = myPatientsReport_eT.text.toString()
+
+        val DoctorsNameDB = databaseReference?.child(DoctorsName)
+        val PatientsNameDB = DoctorsNameDB?.child(PatientsName)
+
+        PatientsNameDB?.setValue(MyPatientsDB(PatientsAge, PatientsAdd, Report))
+    }
 //
 //    private fun dbformyReports() {
 //
@@ -136,15 +138,18 @@ class createDB : AppCompatActivity() {
 //
 //    }
 //
-//    private fun dbforavailableDoctor() {
-//        databaseReference = database?.reference!!.child("availableDoctors")
-//
-//        val doctorsName = doctorsName_eT.text.toString()
-//        val specialty = specialty_eT.text.toString()
-//
-//        val doctorsNameDB = databaseReference?.child(doctorsName)
-//        doctorsNameDB?.setValue(availableDoctors(specialty))
-//    }
+    //SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+    private fun dbforavailableDoctor() {
+        databaseReference = database?.reference!!.child("MyDoctors")
+
+        val patientsName = patientsName_eT.text.toString()
+        val doctorsName = doctorsName_eT.text.toString()
+        val specialty = specialty_eT.text.toString()
+
+        val patientsNameDB = databaseReference?.child(patientsName)
+        val doctorsNameDB = patientsNameDB?.child(doctorsName)
+        doctorsNameDB?.setValue(MyDoctorsDB(specialty))
+    }
 //
 //    private fun dbforavailableServer() {
 //        databaseReference = database?.reference!!.child("availableServers")

@@ -24,31 +24,16 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <!-- fffffffffffffffffffffffffffffffffffff -->
-
                 <EditText
-                    android:id="@+id/d_eT"
+                    android:id="@+id/patientsName_eT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:ems="10"
-                    android:hint="extra"
+                    android:maxLength="99999999"
+                    android:hint="patientsName"
                     android:inputType="text"
                     android:layout_marginLeft="100dp" />
-
-                <EditText
-                    android:id="@+id/e_eT"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:ems="10"
-                    android:hint="extra"
-                    android:inputType="text"
-                    android:layout_marginLeft="100dp" />
-
-
-                <!-- fffffffffffffffffffffffffffffffffffff -->
-
 
                 <EditText
                     android:id="@+id/doctorsName_eT"
@@ -83,93 +68,93 @@
 
                     android:layout_marginLeft="100dp" />
 
-                <EditText
-                    android:id="@+id/writeReportDoctorsName_eT"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:ems="10"
-                    android:maxLength="99999999"
-                    android:hint="doctorsName"
-                    android:inputType="text"
-                    android:layout_marginLeft="100dp"  />
+<!--                <EditText-->
+<!--                    android:id="@+id/writeReportDoctorsName_eT"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="40dp"-->
+<!--                    android:ems="10"-->
+<!--                    android:maxLength="99999999"-->
+<!--                    android:hint="doctorsName"-->
+<!--                    android:inputType="text"-->
+<!--                    android:layout_marginLeft="100dp"  />-->
 
-                <EditText
-                    android:id="@+id/writeReportPatientsName_eT"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:ems="10"
-                    android:maxLength="99999999"
-                    android:hint="patientsName"
-                    android:inputType="text"
-                    android:layout_marginLeft="100dp" />
+<!--                <EditText-->
+<!--                    android:id="@+id/writeReportPatientsName_eT"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="40dp"-->
+<!--                    android:ems="10"-->
+<!--                    android:maxLength="99999999"-->
+<!--                    android:hint="patientsName"-->
+<!--                    android:inputType="text"-->
+<!--                    android:layout_marginLeft="100dp" />-->
 
-                <EditText
-                    android:id="@+id/existingReports_eT"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:ems="10"
-                    android:maxLength="99999999"
-                    android:hint="existingReports"
-                    android:inputType="text"
-                    android:layout_marginLeft="100dp" />
+<!--                <EditText-->
+<!--                    android:id="@+id/existingReports_eT"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="40dp"-->
+<!--                    android:ems="10"-->
+<!--                    android:maxLength="99999999"-->
+<!--                    android:hint="existingReports"-->
+<!--                    android:inputType="text"-->
+<!--                    android:layout_marginLeft="100dp" />-->
 
-                <EditText
-                    android:id="@+id/updateReports_eT"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:ems="10"
-                    android:maxLength="99999999"
-                    android:hint="updateReports"
-                    android:inputType="text"
-                    android:layout_marginLeft="100dp" />
-
-
-                <Button
-                    android:id="@+id/writeReports_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:text="writeReports"
-                    android:textAllCaps="false"
-                    android:layout_marginLeft="100dp" />
+<!--                <EditText-->
+<!--                    android:id="@+id/updateReports_eT"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="40dp"-->
+<!--                    android:ems="10"-->
+<!--                    android:maxLength="99999999"-->
+<!--                    android:hint="updateReports"-->
+<!--                    android:inputType="text"-->
+<!--                    android:layout_marginLeft="100dp" />-->
 
 
-                <EditText
-                    android:id="@+id/serverNames_eT"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:ems="10"
-                    android:maxLength="99999999"
-                    android:hint="serverNames"
-                    android:inputType="text"
-                    android:layout_marginLeft="100dp" />
-
-                <EditText
-                    android:id="@+id/serverIP_eT"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:ems="10"
-                    android:maxLength="99999999"
-                    android:hint="serverIP"
-                    android:inputType="text"
-                    android:layout_marginLeft="100dp" />
+<!--                <Button-->
+<!--                    android:id="@+id/writeReports_btn"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="40dp"-->
+<!--                    android:text="writeReports"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:layout_marginLeft="100dp" />-->
 
 
-                <Button
-                    android:id="@+id/availableServers_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:text="availableServers"
-                    android:textAllCaps="false"
+<!--                <EditText-->
+<!--                    android:id="@+id/serverNames_eT"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="40dp"-->
+<!--                    android:ems="10"-->
+<!--                    android:maxLength="99999999"-->
+<!--                    android:hint="serverNames"-->
+<!--                    android:inputType="text"-->
+<!--                    android:layout_marginLeft="100dp" />-->
 
-                    android:layout_marginLeft="100dp" />
+<!--                <EditText-->
+<!--                    android:id="@+id/serverIP_eT"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="40dp"-->
+<!--                    android:ems="10"-->
+<!--                    android:maxLength="99999999"-->
+<!--                    android:hint="serverIP"-->
+<!--                    android:inputType="text"-->
+<!--                    android:layout_marginLeft="100dp" />-->
+
+
+<!--                <Button-->
+<!--                    android:id="@+id/availableServers_btn"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="40dp"-->
+<!--                    android:text="availableServers"-->
+<!--                    android:textAllCaps="false"-->
+
+<!--                    android:layout_marginLeft="100dp" />-->
 
 
                 <EditText
@@ -216,52 +201,52 @@
 
                     android:layout_marginLeft="100dp" />
 
-                <EditText
-                    android:id="@+id/myReportsPatientsName_eT"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:ems="10"
-                    android:maxLength="99999999"
-                    android:hint="patientsName"
-                    android:inputType="text"
-                    android:layout_marginLeft="100dp"  />
+<!--                <EditText-->
+<!--                    android:id="@+id/myReportsPatientsName_eT"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="40dp"-->
+<!--                    android:ems="10"-->
+<!--                    android:maxLength="99999999"-->
+<!--                    android:hint="patientsName"-->
+<!--                    android:inputType="text"-->
+<!--                    android:layout_marginLeft="100dp"  />-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/myReportsDoctorsName_eT"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="40dp"-->
+<!--                    android:ems="10"-->
+<!--                    android:maxLength="99999999"-->
+<!--                    android:hint="doctorsName"-->
+<!--                    android:inputType="text"-->
+<!--                    android:layout_marginLeft="100dp" />-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/Report_eT"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="40dp"-->
+<!--                    android:ems="10"-->
+<!--                    android:maxLength="99999999"-->
+<!--                    android:hint="Report"-->
+<!--                    android:inputType="text"-->
+<!--                    android:layout_marginLeft="100dp" />-->
+
+
+<!--                <Button-->
+<!--                    android:id="@+id/myReports_btn"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="40dp"-->
+<!--                    android:text="myReports"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:layout_marginLeft="100dp" />-->
+
 
                 <EditText
-                    android:id="@+id/myReportsDoctorsName_eT"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:ems="10"
-                    android:maxLength="99999999"
-                    android:hint="doctorsName"
-                    android:inputType="text"
-                    android:layout_marginLeft="100dp" />
-
-                <EditText
-                    android:id="@+id/Report_eT"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:ems="10"
-                    android:maxLength="99999999"
-                    android:hint="Report"
-                    android:inputType="text"
-                    android:layout_marginLeft="100dp" />
-
-
-                <Button
-                    android:id="@+id/myReports_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:text="myReports"
-                    android:textAllCaps="false"
-                    android:layout_marginLeft="100dp" />
-
-
-                <EditText
-                    android:id="@+id/patientsInfoDoctorsName_eT"
+                    android:id="@+id/myPatientsDoctorsName_eT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
@@ -272,7 +257,7 @@
                     android:layout_marginLeft="100dp" />
 
                 <EditText
-                    android:id="@+id/patientsInfoPatientsName_eT"
+                    android:id="@+id/myPatientsPatientsName_eT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
@@ -283,7 +268,7 @@
                     android:layout_marginLeft="100dp" />
 
                 <EditText
-                    android:id="@+id/patientsInfoPatientsAge_eT"
+                    android:id="@+id/myPatientsPatientsAge_eT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
@@ -294,7 +279,7 @@
                     android:layout_marginLeft="100dp" />
 
                 <EditText
-                    android:id="@+id/patientsInfoPatientsHome_eT"
+                    android:id="@+id/myPatientsPatientsAdd_eT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
@@ -305,7 +290,7 @@
                     android:layout_marginLeft="100dp" />
 
                 <EditText
-                    android:id="@+id/patientsInfoReport_eT"
+                    android:id="@+id/myPatientsReport_eT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
@@ -326,113 +311,111 @@
                     android:layout_marginLeft="100dp" />
 
 
-                <EditText
-                    android:id="@+id/newReportsPatientsName_eT"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:ems="10"
-                    android:maxLength="99999999"
-                    android:hint="patientsName"
-                    android:inputType="text"
-                    android:layout_marginLeft="100dp"  />
+<!--                <EditText-->
+<!--                    android:id="@+id/newReportsPatientsName_eT"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="40dp"-->
+<!--                    android:ems="10"-->
+<!--                    android:maxLength="99999999"-->
+<!--                    android:hint="patientsName"-->
+<!--                    android:inputType="text"-->
+<!--                    android:layout_marginLeft="100dp"  />-->
 
-                <EditText
-                    android:id="@+id/newReportsDoctorsName_eT"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:ems="10"
-                    android:maxLength="99999999"
-                    android:hint="doctorsName"
-                    android:inputType="text"
-                    android:layout_marginLeft="100dp" />
+<!--                <EditText-->
+<!--                    android:id="@+id/newReportsDoctorsName_eT"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="40dp"-->
+<!--                    android:ems="10"-->
+<!--                    android:maxLength="99999999"-->
+<!--                    android:hint="doctorsName"-->
+<!--                    android:inputType="text"-->
+<!--                    android:layout_marginLeft="100dp" />-->
 
-                <EditText
-                    android:id="@+id/newReportsReport_eT"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="100dp"
-                    android:layout_marginTop="40dp"
-                    android:ems="10"
-                    android:hint="Report"
-                    android:inputType="text"
-                    android:maxLength="99999999" />
-
-
-                <Button
-                    android:id="@+id/newReports_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:text="newReports"
-                    android:textAllCaps="false"
-                    android:layout_marginLeft="100dp" />
+<!--                <EditText-->
+<!--                    android:id="@+id/newReportsReport_eT"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="100dp"-->
+<!--                    android:layout_marginTop="40dp"-->
+<!--                    android:ems="10"-->
+<!--                    android:hint="Report"-->
+<!--                    android:inputType="text"-->
+<!--                    android:maxLength="99999999" />-->
 
 
-                <EditText
-                    android:id="@+id/folderDoctorsName_eT"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:ems="10"
-                    android:maxLength="99999999"
-                    android:hint="doctorsName"
-                    android:inputType="text"
-                    android:layout_marginLeft="100dp"  />
-
-                <EditText
-                    android:id="@+id/folderContentNames_eT"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:ems="10"
-                    android:maxLength="99999999"
-                    android:hint="contentNames"
-                    android:inputType="text"
-                    android:layout_marginLeft="100dp" />
-
-                <Button
-                    android:id="@+id/downloadFolder_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:text="downloadFolder"
-                    android:textAllCaps="false"
-                    android:layout_marginLeft="100dp" />
+<!--                <Button-->
+<!--                    android:id="@+id/newReports_btn"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="40dp"-->
+<!--                    android:text="newReports"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:layout_marginLeft="100dp" />-->
 
 
-                <!-- fffffffffffffffffffffffffffffffffffff -->
+<!--                <EditText-->
+<!--                    android:id="@+id/folderDoctorsName_eT"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="40dp"-->
+<!--                    android:ems="10"-->
+<!--                    android:maxLength="99999999"-->
+<!--                    android:hint="doctorsName"-->
+<!--                    android:inputType="text"-->
+<!--                    android:layout_marginLeft="100dp"  />-->
 
-                <EditText
-                    android:id="@+id/a_eT"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:ems="10"
-                    android:hint="extra"
-                    android:inputType="text"
-                    android:layout_marginLeft="100dp" />
+<!--                <EditText-->
+<!--                    android:id="@+id/folderContentNames_eT"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="40dp"-->
+<!--                    android:ems="10"-->
+<!--                    android:maxLength="99999999"-->
+<!--                    android:hint="contentNames"-->
+<!--                    android:inputType="text"-->
+<!--                    android:layout_marginLeft="100dp" />-->
 
-                <EditText
-                    android:id="@+id/b_eT"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:ems="10"
-                    android:hint="extra"
-                    android:inputType="text"
-                    android:layout_marginLeft="100dp" />
+<!--                <Button-->
+<!--                    android:id="@+id/downloadFolder_btn"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="40dp"-->
+<!--                    android:text="downloadFolder"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:layout_marginLeft="100dp" />-->
 
-                <EditText
-                    android:id="@+id/c_eT"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:ems="10"
-                    android:hint="extra"
-                    android:inputType="text"
-                    android:layout_marginLeft="100dp" />
+
+<!--                <EditText-->
+<!--                    android:id="@+id/a_eT"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="40dp"-->
+<!--                    android:ems="10"-->
+<!--                    android:hint="extra"-->
+<!--                    android:inputType="text"-->
+<!--                    android:layout_marginLeft="100dp" />-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/b_eT"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="40dp"-->
+<!--                    android:ems="10"-->
+<!--                    android:hint="extra"-->
+<!--                    android:inputType="text"-->
+<!--                    android:layout_marginLeft="100dp" />-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/c_eT"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="40dp"-->
+<!--                    android:ems="10"-->
+<!--                    android:hint="extra"-->
+<!--                    android:inputType="text"-->
+<!--                    android:layout_marginLeft="100dp" />-->
 
 
 
