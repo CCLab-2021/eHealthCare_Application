@@ -50,34 +50,4 @@ class myPatientsAdapter(val patientsList : List<myPatientsModel>) : RecyclerView
             notifyItemChanged(position)
         }
     }
-
-
-//class myPatientsAdapter(val patientsList : List<myPatientsModel>) : RecyclerView.Adapter<myPatientsAdapter.ViewHolder>() {
-//    class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
-//        var patientName = itemView.patientName_tV
-//        var patientAge = itemView.patientAge_tV
-//        var patientAddress = itemView.patientAddress_tV
-//        var patientReport = itemView.patientAddress_tV
-////
-////    }
-
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-//        val view = LayoutInflater.from(parent.context).inflate(R.layout.doctor_reports_layout, parent, false)
-//        return ViewHolder(view)
-//    }
-//
-//    override fun getItemCount(): Int {
-//        return patientsList.size
-//    }
-//
-//    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        val patients : myPatientsModel = patientsList[position]
-//        holder.patientName.text = patients.patientsName
-//        holder.patientAddress.text = patients.patientsAddress
-//        holder.patientAge.text = patients.patientsAge
-//        holder.patientReport.text = patients.report
-//
-//
-//    }
-
 }
