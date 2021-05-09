@@ -8,7 +8,7 @@ import android.widget.Toast
 import com.example.ccn_ehealthcare.R
 import com.example.ccn_ehealthcare.UI.doctor.DoctorHome
 import com.example.ccn_ehealthcare.UI.patient.PatientHome
-import com.example.ccn_ehealthcare.firebaseDB.userDB
+import com.example.ccn_ehealthcare.firebaseDB.UserDB
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -101,12 +101,12 @@ class Signup : AppCompatActivity() {
         val currentUserDB = databaseReference?.child(userID)
 
         if (userType == "Patient") {
-            currentUserDB?.setValue(userDB(userID, userNickName, userFullName, userEmail, userPW, userBirth, userType))
+            currentUserDB?.setValue(UserDB(userID, userNickName, userFullName, userEmail, userPW, userBirth, userType))
 
             Log.e("CHECK", "id : ${userID}, nickname : ${userNickName}, fullname : ${userFullName}, email : ${userEmail}, pw : ${userPW}, birth : ${userBirth}, type : ${userType}")
         }
         else if (userType == "Doctor") {
-            currentUserDB?.setValue(userDB(userID, userNickName, userFullName, userEmail, userPW, userBirth, userType))
+            currentUserDB?.setValue(UserDB(userID, userNickName, userFullName, userEmail, userPW, userBirth, userType))
 
             Log.e("CHECK", "id : ${userID}, nickname : ${userNickName}, fullname : ${userFullName}, email : ${userEmail}, pw : ${userPW}, birth : ${userBirth}, type : ${userType}")
         }
