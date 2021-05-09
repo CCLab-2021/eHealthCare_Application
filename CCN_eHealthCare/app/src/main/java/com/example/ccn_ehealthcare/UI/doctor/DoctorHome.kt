@@ -63,9 +63,11 @@ class DoctorHome : AppCompatActivity() {
         }
 
         dPatients_btn.setOnClickListener {
-            startActivity(Intent(this, MyPatients::class.java).apply {
+            Log.e("CHECK", userNickName)
+            val intent = Intent(this, MyPatients::class.java).apply {
                 putExtra(USERNICKNAME, userNickName)
-            })
+            }
+            startActivity(intent)
         }
 
         dReports_btn.setOnClickListener {

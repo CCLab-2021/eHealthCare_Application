@@ -41,28 +41,27 @@
 <!--                android:padding="16dp" />-->
 
             <TextView
-                android:id="@+id/expand_doctorName_tV"
+                android:id="@+id/patientAge_tV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Doctor Name"
+                android:text="patient age"
                 android:textColor="@color/ash"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:padding="16dp" />
 
             <TextView
-                android:id="@+id/expand_hospitalName_tV"
+                android:id="@+id/patientAddress_tV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hospital Name"
+                android:text="patient address"
                 android:textColor="@color/ash"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:padding="16dp"
-                android:layout_below="@id/expand_doctorName_tV"/>
-
+                android:layout_below="@id/patientAge_tV"/>
             <EditText
-                android:id="@+id/expand_report_eT"
+                android:id="@+id/patientReport_tV"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:hint="Write a Report"
@@ -72,7 +71,17 @@
                 android:textStyle="bold"
                 android:padding="16dp"
                 android:background="@drawable/report"
-                android:layout_below="@id/expand_hospitalName_tV"/>
+                android:layout_below="@id/patientAddress_tV"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/patientReport_tV"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/round_pantoneblue_btn"
+                android:text="save"
+                app:backgroundTint="@color/Pantoneblue" />
         </RelativeLayout>
 
     </LinearLayout>
