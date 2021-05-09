@@ -65,7 +65,7 @@
             android:textColor="@color/white"
             android:textSize="22sp"
             android:textStyle="bold"
-            app:backgroundTint="#FFFFFF"
+            app:backgroundTint="@color/skyblue"
             tools:backgroundTint="@color/skyblue" />
 
         <Button
