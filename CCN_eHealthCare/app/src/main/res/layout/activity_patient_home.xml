@@ -130,7 +130,6 @@
             android:text="Emergency"
             android:textColor="@color/yellow"
             android:textSize="15sp"
-            android:textStyle="bold"
             app:backgroundTint="@color/tomato" />
     </LinearLayout>
 
@@ -139,37 +138,37 @@
         android:layout_height="wrap_content"
 
         android:layout_marginLeft="32dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="32dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/info_lLayout"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" >
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info_lLayout">
 
 
         <Button
             android:id="@+id/pUpdateProfile_btn"
-            android:layout_width="100dp"
-            android:layout_height="60dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_weight="1"
             android:background="@drawable/round_skyblue_btn"
             android:text="Edit Profile"
             android:textColor="@color/white"
             android:textSize="15sp"
-            android:textStyle="bold"
+
             app:backgroundTint="@color/skyblue" />
 
         <Button
             android:id="@+id/pLogout_btn"
-            android:layout_width="100dp"
-            android:layout_height="60dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_weight="1"
             android:background="@drawable/round_skyblue_btn"
             android:text="Log Out"
             android:textColor="@color/white"
             android:textSize="15sp"
-            android:textStyle="bold"
             app:backgroundTint="@color/skyblue" />
     </LinearLayout>
 
