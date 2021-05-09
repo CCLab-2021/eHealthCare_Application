@@ -12,6 +12,11 @@ class DoctorServers : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_doctor_servers)
 
+        buttonHandler()
+
+    }
+
+    private fun buttonHandler() {
         server1_btn.setOnClickListener {
             var intent = Intent(this, DoctorContents::class.java).apply {
                 putExtra(HOSPITAL,"HospitalA")
@@ -31,6 +36,9 @@ class DoctorServers : AppCompatActivity() {
                 putExtra(HOSPITAL,"HospitalC")
             }
             startActivity(intent)
+        }
+        moveBack_btn.setOnClickListener {
+            finish()
         }
     }
 }

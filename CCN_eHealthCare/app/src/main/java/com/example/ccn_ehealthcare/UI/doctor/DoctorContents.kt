@@ -9,6 +9,8 @@ import com.example.ccn_ehealthcare.UI.adapter.hospitalAdapter
 import com.example.ccn_ehealthcare.UI.model.hospitalModel
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_doctor_contents.*
+import kotlinx.android.synthetic.main.activity_doctor_contents.moveBack_btn
+import kotlinx.android.synthetic.main.activity_patient_contents.*
 import kotlinx.android.synthetic.main.activity_patient_reports.*
 
 class DoctorContents : AppCompatActivity() {
@@ -32,9 +34,17 @@ class DoctorContents : AppCompatActivity() {
 
         val contentsList = ArrayList<hospitalModel>()
 
+        buttonHandler()
         readHospitalcontentDB()    //
         initRecyclerView(contentsList)    //
     }
+
+    private fun buttonHandler() {
+        moveBack_btn.setOnClickListener {
+            finish()
+        }
+    }
+
     private fun initRecyclerView(reportsList: java.util.ArrayList<hospitalModel>) {
 
         hospitalcontents_rV.layoutManager = LinearLayoutManager(this)
@@ -56,13 +66,8 @@ class DoctorContents : AppCompatActivity() {
                 for (snapshot in p0.children) {
                     Log.e("READ", snapshot.toString())
                     Log.e("PATIENTNAME", snapshot.key.toString())
-                    //Log.e("doctorsName", snapshot.child("doctorsName").value.toString())
-                    Log.e("report", snapshot.child("report").value.toString())
-//                    Log.e("PATIENTREPORT", snapshot.child("report").value.toString())
 
                     var contentsName= snapshot.child("contentNames").value.toString()
-                    //var doctorsName = snapshot.child("doctorsName").value.toString()
-//                    var report = snapshot.child("report").value.toString()
 
                     contentsList.add(hospitalModel(contentsName))
                 }
