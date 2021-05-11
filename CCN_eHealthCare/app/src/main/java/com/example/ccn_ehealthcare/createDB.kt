@@ -115,12 +115,13 @@ class createDB : AppCompatActivity() {
         val availableContentsServerNames = availableContentsServerNames_eT.text.toString()
         val contentsNumber = availableContentsNumber_eT.text.toString()
         val contentsNames = contentsNames_eT.text.toString()
+        val contentURL = contentsURL_eT.text.toString()
 
         databaseReference = database?.reference!!.child("availableContents")
         val serverReference = databaseReference?.child(availableContentsServerNames)
         val contentsNumberReference = serverReference?.child(contentsNumber)
 
-        contentsNumberReference?.setValue(AvailableContentsDB(contentsNames))
+        contentsNumberReference?.setValue(AvailableContentsDB(contentsNames, contentURL))
     }
 
 //    private fun dbforwritereports() {
