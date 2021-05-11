@@ -37,9 +37,9 @@ class myPatientsAdapter(val patientsList : List<myPatientsModel>) : RecyclerView
         var expandableLayout : RelativeLayout = itemView.expandable_layout
 
         init {
-         itemView.reportSave_btn.setOnClickListener {
-             listener.onItemClick(adapterPosition)
-         }
+            itemView.reportSave_btn.setOnClickListener {
+                listener.onItemClick(adapterPosition)
+            }
         }
 
     }
