@@ -1,11 +1,20 @@
 package com.example.ccn_ehealthcare.UI.doctor
 
+import android.Manifest
+import android.app.DownloadManager
+import android.content.Context
+import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ccn_ehealthcare.R
 import com.example.ccn_ehealthcare.UI.adapter.hospitalAdapter
+import com.example.ccn_ehealthcare.UI.adapter.myPatientsAdapter
 import com.example.ccn_ehealthcare.UI.model.hospitalModel
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_doctor_contents.*
@@ -14,6 +23,58 @@ import kotlinx.android.synthetic.main.activity_patient_contents.*
 import kotlinx.android.synthetic.main.activity_patient_reports.*
 
 class DoctorContents : AppCompatActivity() {
+
+    val STORAGE_PERMISSOIN_CODE: Int = 1000
+    var url = ""
+
+    private fun checkVersion(url : String) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), STORAGE_PERMISSOIN_CODE)
+                Log.e("성공1", "AAAAAAA")
+
+            }
+            else {
+                Log.e("성공2", url)
+                startDownloading(url)
+
+
+            }
+        }
+        else {
+            startDownloading(url)
+            Log.e("성공3", "AAAAAAA")
+        }
+    }
+
+    private fun startDownloading(url:String) {
+
+        val request = DownloadManager.Request(Uri.parse(url))
+        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
+                .setTitle("Download")
+                .setDescription("The file is downloading..")
+                .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "${System.currentTimeMillis()}")
+                .allowScanningByMediaScanner()
+
+        val manager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+        manager.enqueue(request)
+
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        when(requestCode) {
+            STORAGE_PERMISSOIN_CODE -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    startDownloading(url)
+                }
+                else {
+                    Toast.makeText(this, "Permission denied", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
 
     var databaseReference : DatabaseReference? = null   //
     var database : FirebaseDatabase? = null //
@@ -46,10 +107,19 @@ class DoctorContents : AppCompatActivity() {
     }
 
     private fun initRecyclerView(reportsList: java.util.ArrayList<hospitalModel>) {
+        var adapter = hospitalAdapter(contentsList)
 
         hospitalcontents_rV.layoutManager = LinearLayoutManager(this)
         hospitalcontents_rV.setHasFixedSize(true)
-        hospitalcontents_rV.adapter = hospitalAdapter(contentsList)
+        hospitalcontents_rV.adapter = adapter
+
+        adapter.setOnItemClickListener(object : hospitalAdapter.onItemClickListener {
+            override fun onItemClick(position: Int) {
+                readHospitalcontentDB()
+                Log.e("뭐ㅑㅇ", url)
+                checkVersion(url)
+            }
+        })
 
     }
 
@@ -68,8 +138,9 @@ class DoctorContents : AppCompatActivity() {
                     Log.e("PATIENTNAME", snapshot.key.toString())
 
                     var contentsName= snapshot.child("contentNames").value.toString()
-
-                    contentsList.add(hospitalModel(contentsName))
+                    var url= snapshot.child("contentURL").value.toString()
+                    Log.e("PATIENTNAME", url)
+                    contentsList.add(hospitalModel(contentsName, url))
                 }
 
                 initRecyclerView(contentsList)
