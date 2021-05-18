@@ -42,8 +42,6 @@ class DoctorHome : AppCompatActivity() {
         userBirth = intent.getStringExtra(USERBIRTH).toString()
         userType = intent.getStringExtra(USERTYPE).toString()
 
-        Log.e("USERINFO", "uid : ${userUid}, nickname : ${userNickName}, password : ${userPW}, birth : ${userBirth}")
-
         welcome_tV.text = "Hello $userNickName. Have a nice day."
 
         buttonHandler()
@@ -63,7 +61,6 @@ class DoctorHome : AppCompatActivity() {
         }
 
         dPatients_btn.setOnClickListener {
-            Log.e("CHECK", userNickName)
             val intent = Intent(this, MyPatients::class.java).apply {
                 putExtra(USERNICKNAME, userNickName)
             }
