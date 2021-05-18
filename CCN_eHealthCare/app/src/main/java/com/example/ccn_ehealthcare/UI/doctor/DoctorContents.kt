@@ -10,23 +10,45 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ccn_ehealthcare.R
 import com.example.ccn_ehealthcare.UI.adapter.hospitalAdapter
-import com.example.ccn_ehealthcare.UI.adapter.myPatientsAdapter
 import com.example.ccn_ehealthcare.UI.model.hospitalModel
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_doctor_contents.*
 import kotlinx.android.synthetic.main.activity_doctor_contents.moveBack_btn
-import kotlinx.android.synthetic.main.activity_patient_contents.*
-import kotlinx.android.synthetic.main.activity_patient_reports.*
 
 class DoctorContents : AppCompatActivity() {
 
     val STORAGE_PERMISSOIN_CODE: Int = 1000
     var url = ""
 
+
+    var databaseReference : DatabaseReference? = null   //
+    var database : FirebaseDatabase? = null //
+
+    val contentsList = ArrayList<hospitalModel>()
+    private val HOSPITAL="HOSPITAL"
+    var hospitalname= ""
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_doctor_contents)
+        hospitalname = intent.getStringExtra(HOSPITAL).toString()
+        Log.e("병원이름", hospitalname)
+
+        database = FirebaseDatabase.getInstance()   //
+        databaseReference = database?.reference!!.child("availableContents") //
+
+
+        val contentsList = ArrayList<hospitalModel>()
+
+        buttonHandler()
+        readHospitalcontentDB()    //
+        initRecyclerView(contentsList)    //
+    }
     private fun checkVersion(url : String) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
@@ -75,57 +97,41 @@ class DoctorContents : AppCompatActivity() {
         }
     }
 
-
-    var databaseReference : DatabaseReference? = null   //
-    var database : FirebaseDatabase? = null //
-
-    val contentsList = ArrayList<hospitalModel>()
-    private val HOSPITAL="HOSPITAL"
-    var hospitalname= ""
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_doctor_contents)
-        hospitalname = intent.getStringExtra(HOSPITAL).toString()
-        Log.e("병원이름", hospitalname)
-
-        database = FirebaseDatabase.getInstance()   //
-        databaseReference = database?.reference!!.child("availableContents") //
-
-
-        val contentsList = ArrayList<hospitalModel>()
-
-        buttonHandler()
-        readHospitalcontentDB()    //
-        initRecyclerView(contentsList)    //
-    }
-
     private fun buttonHandler() {
         moveBack_btn.setOnClickListener {
             finish()
         }
     }
 
-    private fun initRecyclerView(reportsList: java.util.ArrayList<hospitalModel>) {
+    private fun initRecyclerView(contentsList: java.util.ArrayList<hospitalModel>) {
         var adapter = hospitalAdapter(contentsList)
 
         hospitalcontents_rV.layoutManager = LinearLayoutManager(this)
         hospitalcontents_rV.setHasFixedSize(true)
         hospitalcontents_rV.adapter = adapter
+        Log.e("url", url)
 
-        adapter.setOnItemClickListener(object : hospitalAdapter.onItemClickListener {
-            override fun onItemClick(position: Int) {
-                readHospitalcontentDB()
-                Log.e("뭐ㅑㅇ", url)
-                checkVersion(url)
+        adapter.setOnItemClickListener(object : hospitalAdapter.OnItemClickListener{
+            override fun onItemClick(v: View, data: hospitalModel, pos : Int) {
+                Log.e("url확인", data.url)
+                checkVersion(data.url)
             }
+
         })
+//        adapter.setOnItemClickListener(contentsList: contents) {
+//            override fun onItemClick(position: Int) {
+////                Log.e("뭐ㅑㅇ", url)
+////                readHospitalcontentDB()
+//                checkVersion(this.url)
+////                Toast.makeText(applicationContext, "CLICK!", Toast.LENGTH_SHORT).show()
+//            }
+//        })
 
     }
 
     private fun readHospitalcontentDB() {
-            Log.e("READDB", "hospitala db읽기")
-            val hospitalcontentReference = databaseReference?.child(hospitalname)
+        Log.e("READDB", "hospitala db읽기")
+        val hospitalcontentReference = databaseReference?.child(hospitalname)
 
         hospitalcontentReference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
@@ -138,14 +144,13 @@ class DoctorContents : AppCompatActivity() {
                     Log.e("PATIENTNAME", snapshot.key.toString())
 
                     var contentsName= snapshot.child("contentNames").value.toString()
-                    var url= snapshot.child("contentURL").value.toString()
+                    url= snapshot.child("contentURL").value.toString()
                     Log.e("PATIENTNAME", url)
                     contentsList.add(hospitalModel(contentsName, url))
                 }
 
                 initRecyclerView(contentsList)
             }
-
             override fun onCancelled(error: DatabaseError) {
                 Log.e("ONCANCEL", error.message)
             }

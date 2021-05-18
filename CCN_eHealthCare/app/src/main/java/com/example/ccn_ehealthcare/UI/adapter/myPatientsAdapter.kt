@@ -8,45 +8,56 @@ import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ccn_ehealthcare.R
 import com.example.ccn_ehealthcare.UI.doctor.MyPatients
+import com.example.ccn_ehealthcare.UI.model.hospitalModel
 import com.example.ccn_ehealthcare.UI.model.myPatientsModel
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.doctor_reports_layout.view.*
+import kotlinx.android.synthetic.main.hospital_contents_layout.view.*
 
 class myPatientsAdapter(val patientsList : List<myPatientsModel>) : RecyclerView.Adapter<myPatientsAdapter.ViewHolder>(){
 
-    private lateinit var clickListener : onItemClickListener
-
-    interface onItemClickListener {
-        fun onItemClick(position: Int)
+    interface OnItemClickListener{
+        fun onItemClick(v:View, data: myPatientsModel, pos : Int)
     }
-
-    fun setOnItemClickListener(listener: onItemClickListener) {
-
-        clickListener = listener
+    private var listener : OnItemClickListener? = null
+    fun setOnItemClickListener(listener : OnItemClickListener) {
+        this.listener = listener
     }
 
 
-    class ViewHolder(itemView : View, listener: onItemClickListener) : RecyclerView.ViewHolder(itemView){
+    inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
         var patientName = itemView.patientName_tV
         var patientAge = itemView.patientAge_tV
         var patientAddress = itemView.patientAddress_tV
-        var patientReport : TextView = itemView.patientReport_eT
+        var patientReport : EditText = itemView.patientReport_eT
         var linearLayout : LinearLayout = itemView.linearLayout
         var expandableLayout : RelativeLayout = itemView.expandable_layout
+        var t_patientReport =""
 
-        init {
-            itemView.reportSave_btn.setOnClickListener {
-                listener.onItemClick(adapterPosition)
+        fun bind(item: myPatientsModel) {
+            patientName.text = item.patientsName
+            patientAge.text = item.patientsAge.toString()
+            patientAddress.text = item.patientsAddress
+            t_patientReport = item.report
+            patientReport.setText(t_patientReport)
+
+            val pos = adapterPosition
+            if(pos!= RecyclerView.NO_POSITION)
+            {
+                itemView.reportSave_btn.setOnClickListener{
+                    listener?.onItemClick(itemView, item ,pos)
+                }
             }
+
         }
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.doctor_reports_layout, parent, false)
-        return ViewHolder(view, clickListener)
+        return ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -54,12 +65,7 @@ class myPatientsAdapter(val patientsList : List<myPatientsModel>) : RecyclerView
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val patients : myPatientsModel = patientsList[position]
-        holder.patientName.text = patients.patientsName
-        holder.patientAddress.text = patients.patientsAddress
-        holder.patientAge.text = patients.patientsAge
-        holder.patientReport.text = patients.report
-
+        holder.bind(patientsList[position])
         val isExpandable : Boolean = patientsList[position].expandable
         holder.expandableLayout.visibility = if (isExpandable) View.VISIBLE else View.GONE
 
