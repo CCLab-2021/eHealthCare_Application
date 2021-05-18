@@ -146,10 +146,11 @@ class createDB : AppCompatActivity() {
         val patientsName = patientsName_eT.text.toString()
         val doctorsName = doctorsName_eT.text.toString()
         val specialty = specialty_eT.text.toString()
+        val phoneNum = phoneNum_eT.text.toString()
 
         val patientsNameDB = databaseReference?.child(patientsName)
         val doctorsNameDB = patientsNameDB?.child(doctorsName)
-        doctorsNameDB?.setValue(MyDoctorsDB(specialty))
+        doctorsNameDB?.setValue(MyDoctorsDB(specialty, phoneNum))
     }
 //
 //    private fun dbforavailableServer() {

@@ -57,6 +57,17 @@
                     android:inputType="text"
                     android:layout_marginLeft="100dp" />
 
+                <EditText
+                    android:id="@+id/phoneNum_eT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="40dp"
+                    android:ems="10"
+                    android:hint="Phone Number"
+                    android:inputType="phone"
+                    android:maxLength="99999999" />
+
 
                 <Button
                     android:id="@+id/availableDoctor_btn"
