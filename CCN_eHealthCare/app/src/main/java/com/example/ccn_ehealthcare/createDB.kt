@@ -115,12 +115,13 @@ class createDB : AppCompatActivity() {
         val availableContentsServerNames = availableContentsServerNames_eT.text.toString()
         val contentsNumber = availableContentsNumber_eT.text.toString()
         val contentsNames = contentsNames_eT.text.toString()
+        val contentURL = contentsURL_eT.text.toString()
 
         databaseReference = database?.reference!!.child("availableContents")
         val serverReference = databaseReference?.child(availableContentsServerNames)
         val contentsNumberReference = serverReference?.child(contentsNumber)
 
-        contentsNumberReference?.setValue(AvailableContentsDB(contentsNames))
+        contentsNumberReference?.setValue(AvailableContentsDB(contentsNames, contentURL))
     }
 
 //    private fun dbforwritereports() {
@@ -145,10 +146,11 @@ class createDB : AppCompatActivity() {
         val patientsName = patientsName_eT.text.toString()
         val doctorsName = doctorsName_eT.text.toString()
         val specialty = specialty_eT.text.toString()
+        val phoneNum = phoneNum_eT.text.toString()
 
         val patientsNameDB = databaseReference?.child(patientsName)
         val doctorsNameDB = patientsNameDB?.child(doctorsName)
-        doctorsNameDB?.setValue(MyDoctorsDB(specialty))
+        doctorsNameDB?.setValue(MyDoctorsDB(specialty, phoneNum))
     }
 //
 //    private fun dbforavailableServer() {
