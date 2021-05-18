@@ -67,12 +67,6 @@ class DoctorHome : AppCompatActivity() {
             startActivity(intent)
         }
 
-        dReports_btn.setOnClickListener {
-            startActivity(Intent(this, DoctorReports::class.java).apply {
-                putExtra(USERNICKNAME, userNickName)
-            })
-        }
-
         download_btn.setOnClickListener {
             startActivity(Intent(this, DoctorServers::class.java))
         }

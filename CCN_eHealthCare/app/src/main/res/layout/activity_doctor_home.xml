@@ -84,20 +84,6 @@
             android:textSize="18sp"
             app:backgroundTint="@color/skyblue" />
 
-        <Button
-            android:id="@+id/dReports_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:layout_weight="1"
-            android:background="@drawable/round_skyblue_btn"
-            android:text="Write a Report"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            app:backgroundTint="@color/skyblue" />
-
-
     </LinearLayout>
 
     <Button

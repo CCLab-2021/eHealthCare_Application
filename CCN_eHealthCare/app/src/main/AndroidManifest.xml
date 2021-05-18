@@ -26,7 +26,6 @@
         <activity android:name=".UI.patient.MyDoctors" />
         <activity android:name=".UI.UserProfile" />
         <activity android:name=".UI.doctor.MyPatients" />
-        <activity android:name=".UI.doctor.DoctorReports" />
         <activity android:name=".UI.patient.PatientHome" />
         <activity android:name=".UI.doctor.DoctorHome" />
         <activity android:name=".UI.auth.Signup" />
