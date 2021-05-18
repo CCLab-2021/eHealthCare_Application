@@ -48,6 +48,7 @@ class myPatientsAdapter(val patientsList : List<myPatientsModel>) : RecyclerView
             {
                 itemView.reportSave_btn.setOnClickListener{
                     listener?.onItemClick(itemView, item ,pos)
+                    var a = patientReport.text
                 }
             }
 
