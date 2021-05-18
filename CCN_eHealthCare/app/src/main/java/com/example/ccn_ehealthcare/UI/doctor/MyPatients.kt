@@ -11,6 +11,7 @@ import com.example.ccn_ehealthcare.UI.model.myPatientsModel
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_my_patients.*
 import kotlinx.android.synthetic.main.doctor_reports_layout.*
+import kotlinx.android.synthetic.main.doctor_reports_layout.view.*
 
 class MyPatients : AppCompatActivity() {
     var databaseReference : DatabaseReference? = null   //
@@ -52,12 +53,13 @@ class MyPatients : AppCompatActivity() {
 
         adapter.setOnItemClickListener(object : myPatientsAdapter.OnItemClickListener{
             override fun onItemClick(v: View, data: myPatientsModel, pos : Int) {
-                var report = patientReport_eT.text.toString()
+                var report = v.patientReport_eT .text.toString()
                 Log.e("report내용", report)
                 val mypatientscontentReference = databaseReference?.child(userNickName)
-                val a = mypatientscontentReference?.child(data.patientsName)
+                val a =mypatientscontentReference?.child(data.patientsName)
 
                 a?.child("report")!!.setValue(report)
+                patientsList.clear()
                 adapter.notifyDataSetChanged()
 //                patientsList.add(myPatientsModel(data.patientsName, data.patientsAddress, data.patientsAge, patientReport))
 //                initRecyclerView(patientsList)
