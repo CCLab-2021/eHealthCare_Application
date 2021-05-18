@@ -2,18 +2,13 @@ package com.example.ccn_ehealthcare.UI.doctor
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ccn_ehealthcare.R
-import com.example.ccn_ehealthcare.UI.adapter.hospitalAdapter
 import com.example.ccn_ehealthcare.UI.adapter.myPatientsAdapter
-import com.example.ccn_ehealthcare.UI.model.hospitalModel
 import com.example.ccn_ehealthcare.UI.model.myPatientsModel
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_doctor_contents.*
 import kotlinx.android.synthetic.main.activity_my_patients.*
 import kotlinx.android.synthetic.main.doctor_reports_layout.*
 
@@ -42,22 +37,30 @@ class MyPatients : AppCompatActivity() {
         val patientsList = ArrayList<myPatientsModel>()
 
         readmypatienscontentDB()    //
-        initRecyclerView(patientsList)    //
+//        initRecyclerView(patientsList)    //
 
         val report = intent.getSerializableExtra("report")
         Log.e("TEST", report.toString())
     }
 
-    private fun initRecyclerView(patientsList: java.util.ArrayList<myPatientsModel>) {
+    private fun initRecyclerView(patientsList: ArrayList<myPatientsModel>) {
         var adapter = myPatientsAdapter(patientsList)
 
         myPatients_rV.layoutManager = LinearLayoutManager(this)
         myPatients_rV.setHasFixedSize(true)
         myPatients_rV.adapter = adapter
 
-        adapter.setOnItemClickListener(object : myPatientsAdapter.onItemClickListener {
-            override fun onItemClick(position: Int) {
-                Toast.makeText(applicationContext, "CLICK!", Toast.LENGTH_SHORT).show()
+        adapter.setOnItemClickListener(object : myPatientsAdapter.OnItemClickListener{
+            override fun onItemClick(v: View, data: myPatientsModel, pos : Int) {
+                var report = patientReport_eT.text.toString()
+                Log.e("report내용", report)
+                val mypatientscontentReference = databaseReference?.child(userNickName)
+                val a = mypatientscontentReference?.child(data.patientsName)
+
+                a?.child("report")!!.setValue(report)
+                adapter.notifyDataSetChanged()
+//                patientsList.add(myPatientsModel(data.patientsName, data.patientsAddress, data.patientsAge, patientReport))
+//                initRecyclerView(patientsList)
             }
 
         })
@@ -81,6 +84,7 @@ class MyPatients : AppCompatActivity() {
                     val patientAddress = snapshot.child("patientsAddress").value.toString()
                     val patientAge = snapshot.child("patientsAge").value.toString()
                     val patientReport = snapshot.child("report").value.toString()
+                    Log.e("report내용", patientReport)
 
                     val age = "Age : $patientAge"
                     val add = "Address : $patientAddress"
