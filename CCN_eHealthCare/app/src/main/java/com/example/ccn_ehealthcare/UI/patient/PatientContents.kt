@@ -3,6 +3,7 @@ package com.example.ccn_ehealthcare.UI.patient
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ccn_ehealthcare.R
 import com.example.ccn_ehealthcare.UI.adapter.ServerAdapter
@@ -42,18 +43,11 @@ class PatientContents : AppCompatActivity() {
     }
 
     private fun readServerContentDB() {
-        Log.e("READDB", "START")
         val serverContentReference = databaseReference?.child(serverName)
 
         serverContentReference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
-                Log.e("DATACHANGE", "START")
-                Log.e("SERVERNAME", p0.key.toString())
-
                 for (snapshot in p0.children) {
-                    Log.e("ContentNum", snapshot.key.toString())
-                    Log.e("ContentName", snapshot.child("contentNames").value.toString())
-
                     val contentsName = snapshot.child("contentNames").value.toString()
 
                     contentsList.add(ServerModel(contentsName))
@@ -64,7 +58,7 @@ class PatientContents : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.e("ONCANCLE", error.message)
+                Toast.makeText(applicationContext, "Error Occurred, Try Again!", Toast.LENGTH_SHORT).show()
             }
 
         })

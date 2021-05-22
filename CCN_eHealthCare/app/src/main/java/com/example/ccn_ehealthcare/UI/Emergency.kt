@@ -35,7 +35,7 @@ class Emergency : AppCompatActivity() {
         databaseReference = database?.reference!!.child("MyDoctors")
 
         nickname = intent.getStringExtra(USERNICKNAME).toString()
-//
+
         buttonHandler()
         readMyDoctorsDB()
         initRecyclerView(doctorList)
@@ -65,8 +65,8 @@ class Emergency : AppCompatActivity() {
         patientsReference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
                 for (snapshot in p0.children) {
-                    var doctorName = snapshot.key.toString()
-                    var phoneNum = snapshot.child("phoneNum").value.toString()
+                    val doctorName = snapshot.key.toString()
+                    val phoneNum = snapshot.child("phoneNum").value.toString()
 
                     doctorList.add(CallDoctorModel(doctorName, phoneNum))
                 }

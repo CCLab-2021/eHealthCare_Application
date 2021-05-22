@@ -47,11 +47,9 @@ class Signup : AppCompatActivity() {
         userType_Group.setOnCheckedChangeListener { group, checkedId ->
             if (checkedId == R.id.userPatient) {
                 userType = "Patient"
-                Log.e("USERTYPE", userType)
             }
             else if (checkedId == R.id.userDoctor) {
                 userType = "Doctor"
-                Log.e("USERTYPE", userType)
             }
         }
 
@@ -65,7 +63,7 @@ class Signup : AppCompatActivity() {
         }
 
         goback_login_btn.setOnClickListener {
-            var intent = Intent(applicationContext, Login::class.java)
+            val intent = Intent(applicationContext, Login::class.java)
             startActivity(intent)
             finish()
         }
@@ -84,31 +82,24 @@ class Signup : AppCompatActivity() {
                     Toast.makeText(this, "SignUp Successful", Toast.LENGTH_SHORT).show()
 
                     createDB(userID, userNickName, userFullName, userEmail, userPW, userBirth, userType)
-
-                    Log.e("CreateUser", "Ok.")
                 }
                 else {
                     Toast.makeText(this, "SignUp Failed", Toast.LENGTH_SHORT).show()
-                    Log.e("CreateUser", "Failed.")
                 }
             }
 
     }
 
     private fun createDB(userID: String, userNickName: String, userFullName: String, userEmail: String, userPW: String, userBirth: String, userType: String) {
-        Log.e("CreateDB", "Start")
-
         val currentUserDB = databaseReference?.child(userID)
 
         if (userType == "Patient") {
             currentUserDB?.setValue(UserDB(userID, userNickName, userFullName, userEmail, userPW, userBirth, userType))
 
-            Log.e("CHECK", "id : ${userID}, nickname : ${userNickName}, fullname : ${userFullName}, email : ${userEmail}, pw : ${userPW}, birth : ${userBirth}, type : ${userType}")
         }
         else if (userType == "Doctor") {
             currentUserDB?.setValue(UserDB(userID, userNickName, userFullName, userEmail, userPW, userBirth, userType))
 
-            Log.e("CHECK", "id : ${userID}, nickname : ${userNickName}, fullname : ${userFullName}, email : ${userEmail}, pw : ${userPW}, birth : ${userBirth}, type : ${userType}")
         }
 
         movePage(userID, userNickName, userFullName, userEmail, userPW, userBirth, userType)

@@ -62,12 +62,12 @@ class PatientReports : AppCompatActivity() {
         patientNameReference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
                 val report = p0.child("report").value.toString()
-                Log.e("REPORT", report)
-
                 reports_tV.text = report
             }
 
-            override fun onCancelled(error: DatabaseError) {}
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(applicationContext, "Error Occurred, Try Again!", Toast.LENGTH_SHORT).show()
+            }
 
         })
     }

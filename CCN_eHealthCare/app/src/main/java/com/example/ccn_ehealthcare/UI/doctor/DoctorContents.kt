@@ -37,7 +37,7 @@ class DoctorContents : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_doctor_contents)
         hospitalname = intent.getStringExtra(HOSPITAL).toString()
-        Log.e("병원이름", hospitalname)
+
 
         database = FirebaseDatabase.getInstance()   //
         databaseReference = database?.reference!!.child("availableContents") //
@@ -53,19 +53,13 @@ class DoctorContents : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
                 requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), STORAGE_PERMISSOIN_CODE)
-                Log.e("성공1", "AAAAAAA")
-
             }
             else {
-                Log.e("성공2", url)
                 startDownloading(url)
-
-
             }
         }
         else {
             startDownloading(url)
-            Log.e("성공3", "AAAAAAA")
         }
     }
 
@@ -118,41 +112,24 @@ class DoctorContents : AppCompatActivity() {
             }
 
         })
-//        adapter.setOnItemClickListener(contentsList: contents) {
-//            override fun onItemClick(position: Int) {
-////                Log.e("뭐ㅑㅇ", url)
-////                readHospitalcontentDB()
-//                checkVersion(this.url)
-////                Toast.makeText(applicationContext, "CLICK!", Toast.LENGTH_SHORT).show()
-//            }
-//        })
-
     }
 
     private fun readHospitalcontentDB() {
-        Log.e("READDB", "hospitala db읽기")
         val hospitalcontentReference = databaseReference?.child(hospitalname)
 
         hospitalcontentReference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
-//                patientList.clear()
-                Log.e("DATACHANGE", "AAAAAAA")
-                Log.e("dd", p0.key.toString())
-
                 for (snapshot in p0.children) {
-                    Log.e("READ", snapshot.toString())
-                    Log.e("PATIENTNAME", snapshot.key.toString())
+                    val contentsName= snapshot.child("contentNames").value.toString()
 
-                    var contentsName= snapshot.child("contentNames").value.toString()
                     url= snapshot.child("contentURL").value.toString()
-                    Log.e("PATIENTNAME", url)
                     contentsList.add(HospitalModel(contentsName, url))
                 }
 
                 initRecyclerView(contentsList)
             }
             override fun onCancelled(error: DatabaseError) {
-                Log.e("ONCANCEL", error.message)
+                Toast.makeText(applicationContext, "Error Occurred, Try Again!", Toast.LENGTH_SHORT).show()
             }
         })
     }
