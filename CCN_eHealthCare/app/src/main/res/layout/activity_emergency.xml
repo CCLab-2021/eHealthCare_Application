@@ -59,22 +59,28 @@
             android:textStyle="bold"
             app:backgroundTint="@color/skyblue" />
 
-        <Button
-            android:id="@+id/calldoc_btn"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="32dp"
-            android:background="@drawable/round_skyblue_btn"
-            android:gravity="center"
-            android:text="contact to my doctor"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:backgroundTint="@color/skyblue" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view9">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/myDoctors_rV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="4dp"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 
     </LinearLayout>
