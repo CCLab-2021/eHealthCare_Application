@@ -18,25 +18,26 @@ class DoctorServers : AppCompatActivity() {
 
     private fun buttonHandler() {
         server1_btn.setOnClickListener {
-            var intent = Intent(this, DoctorContents::class.java).apply {
+            val intent = Intent(this, DoctorContents::class.java).apply {
                 putExtra(HOSPITAL,"HospitalA")
             }
             startActivity(intent)
         }
 
         server2_btn.setOnClickListener {
-            var intent = Intent(this, DoctorContents::class.java).apply {
+            val intent = Intent(this, DoctorContents::class.java).apply {
                 putExtra(HOSPITAL,"HospitalB")
             }
             startActivity(intent)
         }
 
         server3_btn.setOnClickListener {
-            var intent = Intent(this, DoctorContents::class.java).apply {
+            val intent = Intent(this, DoctorContents::class.java).apply {
                 putExtra(HOSPITAL,"HospitalC")
             }
             startActivity(intent)
         }
+
         moveBack_btn.setOnClickListener {
             finish()
         }

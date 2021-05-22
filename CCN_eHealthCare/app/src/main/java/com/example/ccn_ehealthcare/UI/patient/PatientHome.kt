@@ -44,8 +44,6 @@ class PatientHome : AppCompatActivity() {
         userBirth = intent.getStringExtra(USERBIRTH).toString()
         userType = intent.getStringExtra(USERTYPE).toString()
 
-        Log.e("USERINFO", "uid : ${userUid}, nickname : ${userNickName}, password : ${userPW}, birth : ${userBirth}")
-
         welcome_tV.text = "Welcome ${userNickName}. How are you doing today?"
 
         btnClickListener()

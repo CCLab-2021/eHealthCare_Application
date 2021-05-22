@@ -3,6 +3,7 @@ package com.example.ccn_ehealthcare.UI.patient
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ccn_ehealthcare.R
@@ -55,15 +56,12 @@ class MyDoctors : AppCompatActivity() {
 
         patientsReference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
-                Log.e("READDB", "START")
                 for (snapshot in p0.children) {
-                    Log.e("SNAPSHOT", snapshot.key.toString())
-                    Log.e("VALUE", snapshot.child("specialty").value.toString())
-                    var doctorName = snapshot.key.toString()
-                    var specialty = snapshot.child("specialty").value.toString()
+                    val doctorName = snapshot.key.toString()
+                    val specialty = snapshot.child("specialty").value.toString()
 
-                    var name = "Name : $doctorName"
-                    var designation = "Specialty : $specialty"
+                    val name = "Name : $doctorName"
+                    val designation = "Specialty : $specialty"
 
                     doctorList.add(MyDoctorsModel(name, designation))
                 }
@@ -72,7 +70,7 @@ class MyDoctors : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.e("ONCANCEL", error.message)
+                Toast.makeText(applicationContext, "Error Occurred, Try Again!", Toast.LENGTH_SHORT).show()
             }
 
         })

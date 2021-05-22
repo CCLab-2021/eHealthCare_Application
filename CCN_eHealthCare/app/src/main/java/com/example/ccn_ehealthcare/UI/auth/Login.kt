@@ -70,11 +70,10 @@ class Login : AppCompatActivity() {
                 if (it.isSuccessful) {
                     Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
                     val currentUser = firebaseAuth.currentUser
-                    Log.e("FIREBASELOGIN", "START")
+
                     readDB(currentUser)
                 }
                 else {
-                    Log.e("ERROR", it.exception.toString())
                     Toast.makeText(this, "Try Again", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -82,13 +81,12 @@ class Login : AppCompatActivity() {
     }
 
     private fun readDB(currentUser: FirebaseUser?) {
-        Log.e("READDB", "START")
         val userID = currentUser!!.uid
         val userDBReference = databaseReference?.child(userID)
 
         userDBReference?.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(error: DatabaseError) {
-                Log.e("READDB", error.message)
+                Toast.makeText(applicationContext, "Error Occurred, Try Again!", Toast.LENGTH_SHORT).show()
             }
 
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -109,8 +107,6 @@ class Login : AppCompatActivity() {
                     val userFullName = snapshot.child("userFullName").value.toString()
                     val userEmail = snapshot.child("userEmail").value.toString()
                     val enterUserType = "Doctor"
-
-                    Log.e("READVALUE", "UID : $userID")
 
                     movePage(userID, userNickName, userPW, userBirth, userFullName, userEmail, enterUserType)
                 }
