@@ -34,7 +34,7 @@ class myPatientsAdapter(val patientsList : List<myPatientsModel>) : RecyclerView
         var patientReport : EditText = itemView.patientReport_eT
         var linearLayout : LinearLayout = itemView.linearLayout
         var expandableLayout : RelativeLayout = itemView.expandable_layout
-        var t_patientReport =""
+        var t_patientReport = ""
 
         fun bind(item: myPatientsModel) {
             patientName.text = item.patientsName
@@ -44,8 +44,7 @@ class myPatientsAdapter(val patientsList : List<myPatientsModel>) : RecyclerView
             patientReport.setText(t_patientReport)
 
             val pos = adapterPosition
-            if(pos!= RecyclerView.NO_POSITION)
-            {
+            if(pos!= RecyclerView.NO_POSITION) {
                 itemView.reportSave_btn.setOnClickListener{
                     listener?.onItemClick(itemView, item ,pos)
                 }
