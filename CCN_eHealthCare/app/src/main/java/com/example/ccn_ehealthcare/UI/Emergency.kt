@@ -11,6 +11,7 @@ import com.example.ccn_ehealthcare.R
 import com.example.ccn_ehealthcare.UI.adapter.callDocAdapter
 import com.example.ccn_ehealthcare.UI.adapter.hospitalAdapter
 import com.example.ccn_ehealthcare.UI.model.MyDoctorsModel
+import com.example.ccn_ehealthcare.UI.model.doctorModel
 import com.example.ccn_ehealthcare.UI.model.hospitalModel
 import com.example.ccn_ehealthcare.UI.patient.MyDoctors
 import com.google.firebase.database.*
@@ -31,7 +32,7 @@ class Emergency : AppCompatActivity() {
     var databaseReference : DatabaseReference? = null
     var database : FirebaseDatabase? = null
 
-    var doctorList = ArrayList<MyDoctorsModel>()
+    var doctorList = ArrayList<doctorModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,21 +57,21 @@ class Emergency : AppCompatActivity() {
 //        }
 //    }
 
-    private fun initRecyclerView(doctorList: java.util.ArrayList<MyDoctorsModel>) {
+    private fun initRecyclerView(doctorList: java.util.ArrayList<doctorModel>) {
         var adapter = callDocAdapter(doctorList)
         myDoctors_rV.layoutManager = LinearLayoutManager(this)
         myDoctors_rV.setHasFixedSize(true)
         myDoctors_rV.adapter = callDocAdapter(doctorList)
-        adapter.setOnItemClickListener(object : callDocAdapter.OnItemClickListener{
-            override fun onItemClick(v: View, data: MyDoctorsModel, pos : Int) {
-                Log.e("전화번호!!!!!!!!!!!!!!!!", data.phoneNum)
-                val num = "tel:"+data.phoneNum
-                var intent = Intent(Intent.ACTION_VIEW) // ACTION_CALL 적으면 바로 전화 연결
-                intent.setData(Uri.parse(num))
-                startActivity(intent)
-            }
-
-        })
+//        adapter.setOnItemClickListener(object : callDocAdapter.OnItemClickListener{
+//            override fun onItemClick(v: View, data: MyDoctorsModel, pos : Int) {
+//                Log.e("전화번호!!!!!!!!!!!!!!!!", data.phoneNum)
+//                val num = "tel:"+data.phoneNum
+//                var intent = Intent(Intent.ACTION_VIEW) // ACTION_CALL 적으면 바로 전화 연결
+//                intent.setData(Uri.parse(num))
+//                startActivity(intent)
+//            }
+//
+//        })
 
     }
 
@@ -82,11 +83,11 @@ class Emergency : AppCompatActivity() {
                 for (snapshot in p0.children) {
                     Log.e("SNAPSHOT", snapshot.key.toString())
                     var doctorName = snapshot.key.toString()
-                    var doctorNum = snapshot.child("phoneNum").value.toString()
-                    Log.e("SNAPSHOT", doctorNum)
+                    var phoneNum = snapshot.child("phoneNum").value.toString()
+                    Log.e("SNAPSHOT", phoneNum)
 
 
-                    doctorList.add(MyDoctorsModel(doctorName, doctorNum))
+                    doctorList.add(doctorModel(doctorName, phoneNum))
                 }
 
                 initRecyclerView(doctorList)

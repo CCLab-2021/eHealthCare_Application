@@ -11,17 +11,17 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ccn_ehealthcare.R
-import com.example.ccn_ehealthcare.UI.model.MyDoctorsModel
-import com.example.ccn_ehealthcare.UI.model.hospitalModel
-import com.example.ccn_ehealthcare.UI.patient.PatientServers
+
+import com.example.ccn_ehealthcare.UI.model.doctorModel
+
 import kotlinx.android.synthetic.main.call_doctor_layout.view.*
 
 
 
-class callDocAdapter(val doctorList: List<MyDoctorsModel>) : RecyclerView.Adapter<callDocAdapter.ViewHolder>(){
+class callDocAdapter(val doctorList: List<doctorModel>) : RecyclerView.Adapter<callDocAdapter.ViewHolder>(){
 
     interface OnItemClickListener{
-        fun onItemClick(v:View, data: MyDoctorsModel, pos : Int)
+        fun onItemClick(v:View, data: doctorModel, pos : Int)
     }
     private var listener : OnItemClickListener? = null
     fun setOnItemClickListener(listener : OnItemClickListener) {
@@ -31,10 +31,10 @@ class callDocAdapter(val doctorList: List<MyDoctorsModel>) : RecyclerView.Adapte
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var doctorname = itemView.doctorsName_tV
-        var doctornum = ""
+        var doctornum = " "
 
 
-        fun bind(item: MyDoctorsModel) {
+        fun bind(item: doctorModel) {
             doctorname.text = item.doctorName
             doctornum= item.phoneNum
 
@@ -43,12 +43,11 @@ class callDocAdapter(val doctorList: List<MyDoctorsModel>) : RecyclerView.Adapte
             {
                 itemView.calling.setOnClickListener {
                     listener?.onItemClick(itemView,item,pos)
-//                        var intent = Intent(Intent.ACTION_VIEW)
-//                        var a = ""
-//                        a="tel:"+item.phoneNum
-//                        intent.data= Uri.parse(a)
-//                        Log.e("전화번호", doctornum)
-//                        ContextCompat.startActivity(itemView.context, intent, null)
+                        var intent = Intent(Intent.ACTION_VIEW)
+                        var a="tel:"+item.phoneNum
+                        intent.setData(Uri.parse(a))
+                        Log.e("전화번호", a)
+                        ContextCompat.startActivity(itemView.context, intent, null)
                 }
             }
 
