@@ -5,9 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ccn_ehealthcare.R
-import com.example.ccn_ehealthcare.UI.adapter.serverAdapter
-import com.example.ccn_ehealthcare.UI.model.hospitalModel
-import com.example.ccn_ehealthcare.UI.model.serverModel
+import com.example.ccn_ehealthcare.UI.adapter.ServerAdapter
+import com.example.ccn_ehealthcare.UI.model.ServerModel
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_patient_contents.*
 
@@ -16,7 +15,7 @@ class PatientContents : AppCompatActivity() {
     var databaseReference : DatabaseReference? = null
     var database : FirebaseDatabase? = null
 
-    val contentsList = ArrayList<serverModel>()
+    val contentsList = ArrayList<ServerModel>()
     private val SERVERNAME = "SERVERNAME"
     var serverName = ""
 
@@ -29,7 +28,7 @@ class PatientContents : AppCompatActivity() {
 
         serverName = intent.getStringExtra(SERVERNAME).toString()
 
-        val contentsList = ArrayList<serverModel>()
+        val contentsList = ArrayList<ServerModel>()
 
         buttonHandler()
         readServerContentDB()
@@ -57,7 +56,7 @@ class PatientContents : AppCompatActivity() {
 
                     val contentsName = snapshot.child("contentNames").value.toString()
 
-                    contentsList.add(serverModel(contentsName))
+                    contentsList.add(ServerModel(contentsName))
                 }
 
                 initRecyclerView(contentsList)
@@ -71,10 +70,10 @@ class PatientContents : AppCompatActivity() {
         })
     }
 
-    private fun initRecyclerView(contentList: ArrayList<serverModel>) {
+    private fun initRecyclerView(contentList: ArrayList<ServerModel>) {
         serverContents_rV.layoutManager = LinearLayoutManager(this)
         serverContents_rV.setHasFixedSize(true)
-        serverContents_rV.adapter = serverAdapter(contentList)
+        serverContents_rV.adapter = ServerAdapter(contentList)
 
     }
 }

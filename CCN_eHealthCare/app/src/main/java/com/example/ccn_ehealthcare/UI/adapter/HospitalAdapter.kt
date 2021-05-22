@@ -5,15 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ccn_ehealthcare.R
-import com.example.ccn_ehealthcare.UI.model.hospitalModel
+import com.example.ccn_ehealthcare.UI.model.HospitalModel
 import kotlinx.android.synthetic.main.hospital_contents_layout.view.*
-import java.util.ArrayList
 
 
-class hospitalAdapter(val contentsList : List<hospitalModel>) : RecyclerView.Adapter<hospitalAdapter.ViewHolder>() {
+class HospitalAdapter(val contentsList : List<HospitalModel>) : RecyclerView.Adapter<HospitalAdapter.ViewHolder>() {
 
     interface OnItemClickListener{
-        fun onItemClick(v:View, data: hospitalModel, pos : Int)
+        fun onItemClick(v:View, data: HospitalModel, pos : Int)
     }
     private var listener : OnItemClickListener? = null
     fun setOnItemClickListener(listener : OnItemClickListener) {
@@ -27,7 +26,7 @@ class hospitalAdapter(val contentsList : List<hospitalModel>) : RecyclerView.Ada
         var url = itemView.url
 
 
-        fun bind(item: hospitalModel) {
+        fun bind(item: HospitalModel) {
             contentsName.text = item.contentNames
             url.text = item.url
 

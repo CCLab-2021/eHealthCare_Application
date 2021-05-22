@@ -7,8 +7,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ccn_ehealthcare.R
-import com.example.ccn_ehealthcare.UI.adapter.callDocAdapter
-import com.example.ccn_ehealthcare.UI.model.doctorModel
+import com.example.ccn_ehealthcare.UI.adapter.CallDoctorAdapter
+import com.example.ccn_ehealthcare.UI.model.CallDoctorModel
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_emergency.*
 import kotlinx.android.synthetic.main.activity_emergency.myDoctors_rV
@@ -25,7 +25,7 @@ class Emergency : AppCompatActivity() {
     var databaseReference : DatabaseReference? = null
     var database : FirebaseDatabase? = null
 
-    var doctorList = ArrayList<doctorModel>()
+    var doctorList = ArrayList<CallDoctorModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,10 +53,10 @@ class Emergency : AppCompatActivity() {
         }
     }
 
-    private fun initRecyclerView(doctorList: java.util.ArrayList<doctorModel>) {
+    private fun initRecyclerView(doctorList: java.util.ArrayList<CallDoctorModel>) {
         myDoctors_rV.layoutManager = LinearLayoutManager(this)
         myDoctors_rV.setHasFixedSize(true)
-        myDoctors_rV.adapter = callDocAdapter(doctorList)
+        myDoctors_rV.adapter = CallDoctorAdapter(doctorList)
     }
 
     private fun readMyDoctorsDB() {
@@ -68,7 +68,7 @@ class Emergency : AppCompatActivity() {
                     var doctorName = snapshot.key.toString()
                     var phoneNum = snapshot.child("phoneNum").value.toString()
 
-                    doctorList.add(doctorModel(doctorName, phoneNum))
+                    doctorList.add(CallDoctorModel(doctorName, phoneNum))
                 }
 
                 initRecyclerView(doctorList)

@@ -14,8 +14,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ccn_ehealthcare.R
-import com.example.ccn_ehealthcare.UI.adapter.hospitalAdapter
-import com.example.ccn_ehealthcare.UI.model.hospitalModel
+import com.example.ccn_ehealthcare.UI.adapter.HospitalAdapter
+import com.example.ccn_ehealthcare.UI.model.HospitalModel
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_doctor_contents.*
 import kotlinx.android.synthetic.main.activity_doctor_contents.moveBack_btn
@@ -29,7 +29,7 @@ class DoctorContents : AppCompatActivity() {
     var databaseReference : DatabaseReference? = null   //
     var database : FirebaseDatabase? = null //
 
-    val contentsList = ArrayList<hospitalModel>()
+    val contentsList = ArrayList<HospitalModel>()
     private val HOSPITAL="HOSPITAL"
     var hospitalname= ""
 
@@ -43,7 +43,7 @@ class DoctorContents : AppCompatActivity() {
         databaseReference = database?.reference!!.child("availableContents") //
 
 
-        val contentsList = ArrayList<hospitalModel>()
+        val contentsList = ArrayList<HospitalModel>()
 
         buttonHandler()
         readHospitalcontentDB()    //
@@ -103,16 +103,16 @@ class DoctorContents : AppCompatActivity() {
         }
     }
 
-    private fun initRecyclerView(contentsList: java.util.ArrayList<hospitalModel>) {
-        var adapter = hospitalAdapter(contentsList)
+    private fun initRecyclerView(contentsList: java.util.ArrayList<HospitalModel>) {
+        var adapter = HospitalAdapter(contentsList)
 
         hospitalcontents_rV.layoutManager = LinearLayoutManager(this)
         hospitalcontents_rV.setHasFixedSize(true)
         hospitalcontents_rV.adapter = adapter
         Log.e("url", url)
 
-        adapter.setOnItemClickListener(object : hospitalAdapter.OnItemClickListener{
-            override fun onItemClick(v: View, data: hospitalModel, pos : Int) {
+        adapter.setOnItemClickListener(object : HospitalAdapter.OnItemClickListener{
+            override fun onItemClick(v: View, data: HospitalModel, pos : Int) {
                 Log.e("url확인", data.url)
                 checkVersion(data.url)
             }
@@ -146,7 +146,7 @@ class DoctorContents : AppCompatActivity() {
                     var contentsName= snapshot.child("contentNames").value.toString()
                     url= snapshot.child("contentURL").value.toString()
                     Log.e("PATIENTNAME", url)
-                    contentsList.add(hospitalModel(contentsName, url))
+                    contentsList.add(HospitalModel(contentsName, url))
                 }
 
                 initRecyclerView(contentsList)

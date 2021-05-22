@@ -1,24 +1,18 @@
 package com.example.ccn_ehealthcare.UI.adapter
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ccn_ehealthcare.R
-import com.example.ccn_ehealthcare.UI.doctor.MyPatients
-import com.example.ccn_ehealthcare.UI.model.hospitalModel
-import com.example.ccn_ehealthcare.UI.model.myPatientsModel
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.example.ccn_ehealthcare.UI.model.MyPatientsModel
 import kotlinx.android.synthetic.main.doctor_reports_layout.view.*
-import kotlinx.android.synthetic.main.hospital_contents_layout.view.*
 
-class myPatientsAdapter(val patientsList : List<myPatientsModel>) : RecyclerView.Adapter<myPatientsAdapter.ViewHolder>(){
+class MyPatientsAdapter(val patientsList : List<MyPatientsModel>) : RecyclerView.Adapter<MyPatientsAdapter.ViewHolder>(){
 
     interface OnItemClickListener{
-        fun onItemClick(v:View, data: myPatientsModel, pos : Int)
+        fun onItemClick(v:View, data: MyPatientsModel, pos : Int)
     }
     private var listener : OnItemClickListener? = null
     fun setOnItemClickListener(listener : OnItemClickListener) {
@@ -36,7 +30,7 @@ class myPatientsAdapter(val patientsList : List<myPatientsModel>) : RecyclerView
         var expandableLayout : RelativeLayout = itemView.expandable_layout
         var t_patientReport = ""
 
-        fun bind(item: myPatientsModel) {
+        fun bind(item: MyPatientsModel) {
             patientName.text = item.patientsName
             patientAge.text = item.patientsAge.toString()
             patientAddress.text = item.patientsAddress
