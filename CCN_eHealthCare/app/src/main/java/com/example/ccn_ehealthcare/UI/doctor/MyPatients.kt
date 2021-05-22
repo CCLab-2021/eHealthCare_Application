@@ -57,7 +57,6 @@ class MyPatients : AppCompatActivity() {
                 Log.e("report내용", report)
                 val mypatientscontentReference = databaseReference?.child(userNickName)
                 val a =mypatientscontentReference?.child(data.patientsName)
-
                 a?.child("report")!!.setValue(report)
                 patientsList.clear()
                 adapter.notifyDataSetChanged()

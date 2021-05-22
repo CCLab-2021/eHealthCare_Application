@@ -83,7 +83,9 @@ class PatientHome : AppCompatActivity() {
         }
 
         pEmergency_btn.setOnClickListener {
-            startActivity(Intent(this, Emergency::class.java))
+            startActivity(Intent(this, Emergency::class.java).apply {
+                putExtra(USERNICKNAME, userNickName)
+            })
         }
 
         pLogout_btn.setOnClickListener {
