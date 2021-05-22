@@ -51,7 +51,7 @@
                 android:padding="16dp"
                 android:layout_below="@id/expand_reportsNumber_tV" />
             <TextView
-                android:id="@+id/expand_report_eT"
+                android:id="@+id/expand_report_tV"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:hint="Content of Report"
