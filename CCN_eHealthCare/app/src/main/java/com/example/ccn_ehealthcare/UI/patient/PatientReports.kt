@@ -52,6 +52,10 @@ class PatientReports : AppCompatActivity() {
                 linearLayout2.visibility = INVISIBLE
             }
         }
+
+        moveBack_btn.setOnClickListener {
+            finish()
+        }
     }
 
 
