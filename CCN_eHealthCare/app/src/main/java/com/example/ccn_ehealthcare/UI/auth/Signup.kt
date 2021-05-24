@@ -4,15 +4,19 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.ccn_ehealthcare.R
 import com.example.ccn_ehealthcare.UI.doctor.DoctorHome
 import com.example.ccn_ehealthcare.UI.patient.PatientHome
-import com.example.ccn_ehealthcare.firebaseDB.UserDB
+import com.example.ccn_ehealthcare.firebaseDB.DoctorUserDB
+import com.example.ccn_ehealthcare.firebaseDB.PatientUserDB
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_signup.*
+import kotlinx.android.synthetic.main.signup_doctor_info_dialog.view.*
 
 class Signup : AppCompatActivity() {
 
@@ -29,6 +33,9 @@ class Signup : AppCompatActivity() {
     lateinit var firebaseAuth : FirebaseAuth
     var databaseReference : DatabaseReference? = null
     var database : FirebaseDatabase? = null
+
+    var hospitalName = ""
+    var licenseNum = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +65,28 @@ class Signup : AppCompatActivity() {
             val userPW = editPW.text.toString()
             val userCPW = editCPW.text.toString()
 
-            if (userPW == userCPW) createUser(userEmail, userPW, userType)
+
+            if (userPW == userCPW) {
+                if (userType == "Patient") {
+                    createUser(userEmail, userPW, userType)
+                }
+                else {
+                    val doctorDialogView = LayoutInflater.from(this).inflate(R.layout.signup_doctor_info_dialog, null)
+                    val dialogBuilder = AlertDialog.Builder(this)
+                            .setView(doctorDialogView)
+
+                    val doctorInfoDialog = dialogBuilder.show()
+
+                    doctorDialogView.completeSignup_btn.setOnClickListener {
+                        doctorInfoDialog.dismiss()
+                        hospitalName = doctorDialogView.doctorHospitalName_eT.text.toString()
+                        licenseNum = doctorDialogView.doctorLicenseNum_eT.text.toString()
+
+                        createUser(userEmail, userPW, userType)
+                    }
+                }
+            }
+
             else Toast.makeText(this, "Check your password again", Toast.LENGTH_SHORT).show()
         }
 
@@ -84,6 +112,7 @@ class Signup : AppCompatActivity() {
                     createDB(userID, userNickName, userFullName, userEmail, userPW, userBirth, userType)
                 }
                 else {
+                    Log.e("SIGNUPFAILED", task.result.toString())
                     Toast.makeText(this, "SignUp Failed", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -94,11 +123,11 @@ class Signup : AppCompatActivity() {
         val currentUserDB = databaseReference?.child(userID)
 
         if (userType == "Patient") {
-            currentUserDB?.setValue(UserDB(userID, userNickName, userFullName, userEmail, userPW, userBirth, userType))
+            currentUserDB?.setValue(PatientUserDB(userID, userNickName, userFullName, userEmail, userPW, userBirth, userType))
 
         }
         else if (userType == "Doctor") {
-            currentUserDB?.setValue(UserDB(userID, userNickName, userFullName, userEmail, userPW, userBirth, userType))
+            currentUserDB?.setValue(DoctorUserDB(userID, userNickName, userFullName, userEmail, userPW, userBirth, hospitalName, licenseNum, userType))
 
         }
 
