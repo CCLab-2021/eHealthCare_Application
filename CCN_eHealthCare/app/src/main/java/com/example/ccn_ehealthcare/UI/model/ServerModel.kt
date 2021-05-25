@@ -1,4 +1,4 @@
 package com.example.ccn_ehealthcare.UI.model
 
-class ServerModel (val contentNames : String = "") {
+class ServerModel (val contentNames : String = "", val url: String = "") {
 }
