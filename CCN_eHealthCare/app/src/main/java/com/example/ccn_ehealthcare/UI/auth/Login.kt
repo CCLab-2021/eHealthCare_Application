@@ -68,7 +68,7 @@ class Login : AppCompatActivity() {
         firebaseAuth!!.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Successful", Toast.LENGTH_SHORT).show()
                     val currentUser = firebaseAuth.currentUser
 
                     readDB(currentUser)

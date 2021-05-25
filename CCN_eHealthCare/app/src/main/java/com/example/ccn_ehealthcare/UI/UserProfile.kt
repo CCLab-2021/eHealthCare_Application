@@ -1,13 +1,19 @@
 package com.example.ccn_ehealthcare.UI
 
-import androidx.appcompat.app.AppCompatActivity
+import android.net.wifi.hotspot2.pps.Credential
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.ccn_ehealthcare.R
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.EmailAuthProvider
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_user_profile.*
+
 
 class UserProfile : AppCompatActivity() {
 
@@ -29,6 +35,7 @@ class UserProfile : AppCompatActivity() {
     var userBirth = ""
     var userType = ""
 
+    lateinit var firebaseAuth : FirebaseAuth
     var databaseReference : DatabaseReference? = null
     var database : FirebaseDatabase? = null
 
@@ -36,8 +43,12 @@ class UserProfile : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile)
 
+        firebaseAuth = FirebaseAuth.getInstance()
+        val currentUser = firebaseAuth.currentUser
+
         database = FirebaseDatabase.getInstance()
         databaseReference = database?.reference!!.child("User")
+
 
         userUid = intent.getStringExtra(USERUID).toString()
         userNickName = intent.getStringExtra(USERNICKNAME).toString()
@@ -66,15 +77,27 @@ class UserProfile : AppCompatActivity() {
     }
 
     private fun changePassword() {
+        reauthenticate(userEmail, userPW)
+        firebaseAuth = FirebaseAuth.getInstance()
+        val currentUser = firebaseAuth?.currentUser
         val previousPW = previousPW_eT.text.toString()
         val newPW = changePW_eT.text.toString()
         val confirmNewPW = changeCPW_eT.text.toString()
 
         if (previousPW == userPW) {
             if (newPW == confirmNewPW) {
+                currentUser?.updatePassword(newPW)
+                    ?.addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+                            userPW = newPW
+                            updatePW(userPW)
 
-                userPW = newPW
-                updatePW(userPW)
+                        } else {
+                            Toast.makeText(this, "Try Again", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
 
             } else Toast.makeText(applicationContext, "Password is not same", Toast.LENGTH_SHORT).show()
 
@@ -82,7 +105,30 @@ class UserProfile : AppCompatActivity() {
 
 
     }
+    private fun reauthenticate(email: String,password: String){
 
+        val newPW = changePW_eT.text.toString()
+        val credential = EmailAuthProvider
+            .getCredential(email,password)
+
+        firebaseAuth?.currentUser?.reauthenticate(credential)
+            ?.addOnCompleteListener(this){
+                if(it.isSuccessful){
+                    firebaseAuth?.currentUser?.updatePassword(newPW)
+                        ?.addOnCompleteListener {
+                            if (it.isSuccessful) {
+                                Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
+                                userPW = newPW
+                                updatePW(userPW)
+
+                            } else {
+                                Toast.makeText(this, "Try Again", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+
+                }
+            }
+    }
     private fun updateUserInfo() {
         val updateFullName = userFullName_eT.text.toString()
         val userBirthY = datePicker.year
@@ -98,7 +144,7 @@ class UserProfile : AppCompatActivity() {
         updateInfo(userBirth, userFullName)
     }
 
-    private fun updateInfo(userFullName : String, userBirth : String) {
+    private fun updateInfo(userFullName: String, userBirth: String) {
         val userDBReference = databaseReference?.child(userUid)
 
         userDBReference?.child("userFullName")!!.setValue(userFullName)
