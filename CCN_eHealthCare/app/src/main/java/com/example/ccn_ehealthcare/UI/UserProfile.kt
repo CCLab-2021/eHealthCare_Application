@@ -44,7 +44,6 @@ class UserProfile : AppCompatActivity() {
         setContentView(R.layout.activity_user_profile)
 
         firebaseAuth = FirebaseAuth.getInstance()
-        val currentUser = firebaseAuth.currentUser
 
         database = FirebaseDatabase.getInstance()
         databaseReference = database?.reference!!.child("User")
@@ -77,7 +76,7 @@ class UserProfile : AppCompatActivity() {
     }
 
     private fun changePassword() {
-        reauthenticate(userEmail, userPW)
+        reAuthenticate(userEmail, userPW)
         firebaseAuth = FirebaseAuth.getInstance()
         val currentUser = firebaseAuth?.currentUser
         val previousPW = previousPW_eT.text.toString()
@@ -105,7 +104,7 @@ class UserProfile : AppCompatActivity() {
 
 
     }
-    private fun reauthenticate(email: String,password: String){
+    private fun reAuthenticate(email: String,password: String){
 
         val newPW = changePW_eT.text.toString()
         val credential = EmailAuthProvider
@@ -132,7 +131,7 @@ class UserProfile : AppCompatActivity() {
     private fun updateUserInfo() {
         val updateFullName = userFullName_eT.text.toString()
         val userBirthY = datePicker.year
-        val userBirthM = datePicker.month
+        val userBirthM = datePicker.month + 1
         val userBirthD = datePicker.dayOfMonth
 
         userBirth = "$userBirthY-$userBirthM-$userBirthD"
